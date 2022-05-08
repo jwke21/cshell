@@ -81,11 +81,3 @@ int seashell_game(char **args)
 
   return 1;
 }
-
-/* Array of command function pointers. */
-int (*command_funcs[]) (char **) = {
-  &seashell_cd;
-  &seashell_help;
-  &seashell_exit;
-  &seashell_game;
-}
