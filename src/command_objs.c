@@ -3,18 +3,6 @@
 
 #include "command_objs.h"
 
-/* Description of cd() function. */
-char *desc_cd = "";
-
-/* Description of help() function. */
-char *desc_help = "";
-
-/* Description of exit() function. */
-char *desc_exit = "";
-
-/* Description of game() function. */
-char *desc_game = "";
-
 /********** HELPER METHODS TO INSTANTIATE COMMAND OBJECTS **********/
 
 /* Instantiates cd Command object. */
