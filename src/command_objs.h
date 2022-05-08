@@ -65,4 +65,12 @@ Command *cmd_exit;
 
 Command *cmd_game;
 
+/* Array of pointers to built-in Command object structs */
+Command *cmds[NUM_COMMANDS] = {
+  cmd_cd;
+  cmd_help;
+  cmd_exit;
+  cmd_game;
+}
+
 #endif // COMMAND_OBJS_H
