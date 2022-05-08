@@ -52,12 +52,8 @@ int make_cmds(void);
  * DESCRIPTION
  *    Destroys all Command objects for each of the built-in
  *    shell commands.
- *
- * RETURNS
- *    0 if all the Command objects were successfully destroyed.
- *    -1 if there was a failure.
 */
-int destroy_cmds(void);
+void destroy_cmds(void);
 
 /********** POINTERS TO COMMAND OBJECTS ************/
 
