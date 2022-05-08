@@ -25,12 +25,34 @@ int seashell_help(char **args)
 {
   int i;
 
-  printf("Welcome to my shell!\n");
-  printf("The following commands are built in:\n");
+  /* If user did not pass in command as option. */
+  if (args[1] == NULL) {
+    printf("Welcome to my shell!\n");
+    printf("The following commands are built in:\n");
+    
+    for (i = 0; i < NUM_COMMANDS; i++) {
+      printf("%d : %s\n", i + 1, commands[i]);
+    }
+    printf("\n");
 
-  for (i = 0; i < NUM_COMMANDS; i++) {
-    printf("%d : %s\n", i + 1, commands[i]);
+    printf("To see what a command does type:\n");
+    printf("    help <command>\n");
+    
+    return 1;
   }
+
+  /* Check that user passed in valid option. */
+  for (i = 0; i < NUM_COMMANDS; i++) {
+    if (strcmp(args[1], cmd_names[i]) == 0) {
+      // TODO: CREATE ARRAY OF COMMAND STRUCTS ON HEAP
+      printf("%s\n", *cmds[i]->desc);
+      return 0;
+    }
+  }
+
+  /* Inform user that command is not recognized. */
+  printf("%s is not a recognized built-in shell command.\n", args[1]);
+  printf("Use 'help' command with no options to see list of valid commands");
 
   return 1;
 }
