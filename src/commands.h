@@ -19,41 +19,41 @@ char *commands[] = {
 typedef struct Command
 {
   char *cmd_name;  // Pointer to string in commands[] array.
-  void *Function;
+  void *function;
 } Command;
 
-/********** BUILT-IN COMMANDS **********/
+/********** BUILT-IN COMMAND PROTOTYPES **********/
 
 /*
- * NAME cd()
+ * NAME seashell_cd()
  *
  * DESCRIPTION
  *
  * Changes the current working directory to the one given.
 */
-int cd(const char *);
+int seashell_cd(char **);
 
 /*
- * NAME help()
+ * NAME seashell_help()
  *
  * DESCRIPTION
  *
  * Prints out introduction to shell and the commands that are
  * built into it.
 */
-int help(void);
+int seashell_help(char **);
 
 /*
- * NAME exit()
+ * NAME seashell_exit()
  *
  * DESCRIPTION
  *
  * Exits the shell program.
 */
-int exit(const char *);
+int seashell_exit(char **);
 
 /*
- * NAME game()
+ * NAME seashell_game()
  *
  * DESCRIPTION
  *
@@ -61,7 +61,7 @@ int exit(const char *);
  * between 1 and 10. They get a maximum of three guesses
  * before failing.
 */
-int game(char **);
+int seashell_game(char **);
 
 // Constant for the number of commands built into cshell.
 const int NUM_COMMANDS = sizeof(commands) / sizeof(commands[0]);
