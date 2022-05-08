@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
-
 #ifndef COMMAND_FUNCS_H
 #define COMMAND_FUNCS_H
 
