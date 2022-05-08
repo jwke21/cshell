@@ -8,22 +8,6 @@
 
 #define NUM_COMMANDS 4
 
-/* Array of string references for built in commands. */
-char *commands[] = {
-  "cd",
-  "help",
-  "exit",
-  "game"
-}
-
-/* Command struct to store info about a built in command. */
-#define MAX_FUNC_NAME_LEN 32
-typedef struct Command
-{
-  char *cmd_name;  // Pointer to string in commands[] array.
-  void *function;
-} Command;
-
 /********** BUILT-IN COMMAND PROTOTYPES **********/
 
 /*
