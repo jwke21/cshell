@@ -3,13 +3,65 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Array of string references for built in commands.
+#ifndef COMMANDS_H
+#define COMMANDS_H
+
+/* Array of string references for built in commands. */
 char *commands[] = {
   "cd",
   "help",
   "exit",
   "game"
-};
+}
+
+/* Command struct to store info about a built in command. */
+#define MAX_FUNC_NAME_LEN 32
+typedef struct Command
+{
+  char *cmd_name;  // Pointer to string in commands[] array.
+  void *Function;
+} Command;
+
+/********** BUILT-IN COMMANDS **********/
+
+/*
+ * NAME cd()
+ *
+ * DESCRIPTION
+ *
+ * Changes the current working directory to the one given.
+*/
+int cd(const char *);
+
+/*
+ * NAME help()
+ *
+ * DESCRIPTION
+ *
+ * Prints out introduction to shell and the commands that are
+ * built into it.
+*/
+int help(void);
+
+/*
+ * NAME exit()
+ *
+ * DESCRIPTION
+ *
+ * Exits the shell program.
+*/
+int exit(const char *);
+
+/*
+ * NAME game()
+ *
+ * DESCRIPTION
+ *
+ * Runs a guessing game where the user must guess a number
+ * between 1 and 10. They get a maximum of three guesses
+ * before failing.
+*/
+int game(char **);
 
 // Constant for the number of commands built into cshell.
 const int NUM_COMMANDS = sizeof(commands) / sizeof(commands[0]);
@@ -84,4 +136,4 @@ int (*command_functions[])(char **) = {
   &Game
 };
 
-
+#endif // COMMANDS_H
