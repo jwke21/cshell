@@ -1,7 +1,7 @@
+#include "command_objs.h"
+
 #ifndef COMMAND_FUNCS_H
 #define COMMAND_FUNCS_H
-
-#define NUM_COMMANDS 4
 
 /********** BUILT-IN COMMAND PROTOTYPES **********/
 
@@ -46,10 +46,10 @@ int seashell_game(char **);
 
 /* Array of function pointers for built-in commands. */
 cmd_func cmd_funcs[NUM_COMMANDS] = {
-  &seashell_cd;
-  &seashell_help;
-  &seashell_exit;
-  &seashell_game;
-}
+  &seashell_cd,
+  &seashell_help,
+  &seashell_exit,
+  &seashell_game
+};
 
 #endif // COMMAND_FUNCS_H
