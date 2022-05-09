@@ -24,9 +24,8 @@ int seashell_cd(char **);
  * NAME seashell_help()
  *
  * DESCRIPTION
- *
- * Prints out introduction to shell and the commands that are
- * built into it.
+ *    Prints out introduction to shell and the commands that are
+ *    built into it.
 */
 int seashell_help(char **);
 
@@ -34,8 +33,7 @@ int seashell_help(char **);
  * NAME seashell_exit()
  *
  * DESCRIPTION
- *
- * Exits the shell program.
+ *    Exits the shell program.
 */
 int seashell_exit(char **);
 
@@ -43,10 +41,9 @@ int seashell_exit(char **);
  * NAME seashell_game()
  *
  * DESCRIPTION
- *
- * Runs a guessing game where the user must guess a number
- * between 1 and 10. They get a maximum of three guesses
- * before failing.
+ *    Runs a guessing game where the user must guess a number
+ *    between 1 and 10. They get a maximum of three guesses
+ *    before failing.
 */
 int seashell_game(char **);
 
@@ -66,18 +63,10 @@ cmd_func cmd_funcs[NUM_COMMANDS] = {
 /* Command struct stores info about a built-in command. */
 typedef struct Command
 {
-  char **name;     // Pointer to string reference
+  char **name;    // Pointer to string reference
   cmd_func func;  // Pointer to function
-  char **desc;     // Pointer to description of func
+  char **desc;    // Pointer to description of func
 } Command;
-
-/* Array of string references for built in commands. */
-char *cmd_names[NUM_COMMANDS] = {
-  "cd",
-  "help",
-  "exit",
-  "game"
-};
 
 /*
  * NAME 
@@ -119,7 +108,7 @@ Command *cmds[NUM_COMMANDS] = {
   cmd_help,
   cmd_exit,
   cmd_game
-}
+};
 
 #endif // COMMAND_OBJS_H
 
