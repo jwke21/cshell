@@ -44,4 +44,12 @@ int seashell_exit(char **);
 */
 int seashell_game(char **);
 
+/* Array of function pointers for built-in commands. */
+cmd_func cmd_funcs[NUM_COMMANDS] = {
+  &seashell_cd;
+  &seashell_help;
+  &seashell_exit;
+  &seashell_game;
+}
+
 #endif // COMMAND_FUNCS_H

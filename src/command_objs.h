@@ -22,14 +22,6 @@ char *cmd_names[NUM_COMMANDS] = {
   "game"
 }
 
-/* Array of function pointers for built in commands. */
-int (*cmd_funcs[NUM_COMMANDS]) (char **) = {
-  &seashell_cd;
-  &seashell_help;
-  &seashell_exit;
-  &seashell_game
-}
-
 /*
  * NAME 
  *    make_cmds
