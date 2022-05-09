@@ -1,7 +1,7 @@
-#include "command_funcs.h"
-
 #ifndef COMMAND_OBJS_H
 #define COMMAND_OBJS_H
+
+#define NUM_COMMANDS 4
 
 /* Define a function pointer for a command function type. */
 typedef int (*cmd_func) (char **);
@@ -20,7 +20,7 @@ char *cmd_names[NUM_COMMANDS] = {
   "help",
   "exit",
   "game"
-}
+};
 
 /*
  * NAME 
@@ -56,13 +56,5 @@ Command *cmd_help;
 Command *cmd_exit;
 
 Command *cmd_game;
-
-/* Array of pointers to built-in Command object structs */
-Command *cmds[NUM_COMMANDS] = {
-  cmd_cd;
-  cmd_help;
-  cmd_exit;
-  cmd_game;
-}
 
 #endif // COMMAND_OBJS_H
