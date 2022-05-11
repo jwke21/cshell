@@ -41,26 +41,26 @@ char **parse_cmd_line(char *cmd_line)
   char *token;
   int i = 0;
 
-  // Get pointers to each token in the command line string
+  /* Get pointers to each token in the command line string */
   token = strtok(cmd_line, STRTOK_DELIMS);
 
   while (token != NULL) {
-    // Store each token in the array of tokens
+    /* Store each token in the array of tokens */
     args[i] = token;
     i++;
 
 
-    // Check that the num of input tokens does not exceed maximum
+    /* Check that the num of input args does not exceed maximum. */
     if (i > MAXARGS) {
       fprintf(stderr, "%s\n", "Too many args. Max args is 5.");
       exit(EXIT_FAILURE);
     }
 
-    // Get next token
+    /* Get next token */
     token = strtok(NULL, STRTOK_DELIMS);
   }
 
-  // NULL terminate the array of tokens
+  /* NULL terminate the array of tokens. */
   args[i] = NULL;
 
   return args;
@@ -71,21 +71,27 @@ int execute_unix_cmd(char **args)
 {
   pid_t pid;
 
+  /* fork a child process to run Unix program. */
   pid = fork();
 
+  /* Child process goes here. */
   if (pid == 0) {
-    // Child process executes command.
+    /* Child process executes command. */
     execvp(args[0], args);
 
-    // If child process reaches here, it is not a Unix command.
+    /* If child process reaches here, it is not a Unix command. */
     printf("Command not found\n");
     exit(EXIT_FAILURE);
-  } else if (pid < 0) {
-      // Forking error
-      perror("Forking error");
-  } else {
-      // Parent process waits for child process to execute.
-      wait(NULL);
+  } 
+
+  else if (pid < 0) {
+    perror("Forking error");
+  } 
+
+  /* Parent process goes here. */
+  else {
+    /* Parent process waits for child process to execute. */
+    wait(NULL);
   }
   return 1;
 }
@@ -94,21 +100,20 @@ int execute_unix_cmd(char **args)
 /* Executes the commands input to the command line. */
 int execute_cmds(char **args) 
 {
-  // If there were no arguments input, do nothing.
   if (args[0] == NULL) {
     return 1;
   }
 
   int i;
 
-  // Check if the input command is built into the shell.
+  /* Check if the input command is built into the shell. */
   for (i = 0; i < NUM_COMMANDS; i++) {
-    // If the input command is built into the shell return its execution.
+    /* If the input command is built into the shell return its execution. */
     if (strcmp(args[0], cmd_names[i]) == 0) {
       return (cmd_funcs[i](args));
     }
   }
-  // If command is not built into the shell check if it is a Unix command.
+  /* If command is not built into the shell check if it is a Unix command. */
   return execute_unix_cmd(args);
 }
 
@@ -119,27 +124,28 @@ void shell_loop(void) {
   int status;
 
   while (1) {
-    // Print command prompt
     printf("seashell> ");
-    // Read the command line
-    cmd_line = read_cmd_line();
-    // Parse the command line
+    
+	cmd_line = read_cmd_line();
     args = parse_cmd_line(cmd_line);
-    // Execute commands
     status = execute_cmds(args);
 
     free(cmd_line);
     free(args);
 
-    // Check the status of the execution
+    /* Check the status of the execution. */
     if (!status) break;
   }
 }
 
 
 int main() {
-  // Run command loop
+  /* Initialize shell commands. */
+  make_cmds();
+  /* Run shell command loop. */
   shell_loop();
+  /* Destroy shell commands. */
+  destroy_cmds();
 
   return EXIT_SUCCESS;
 }
