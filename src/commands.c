@@ -63,9 +63,10 @@ int seashell_help(char **args)
 
   /* Inform user that command is not recognized. */
   printf("%s is not a recognized built-in shell command.\n", args[1]);
-  printf("Use 'help' command with no options to see list of valid commands");
+  printf("Use 'help' command with no options to see list of valid commands\n");
 
   return 1;
+}
 
 /********** HELPER METHODS TO INSTANTIATE COMMAND OBJECTS **********/
 
